@@ -1,12 +1,22 @@
 import React, { useState } from "react";
 
 const App = () => {
-  const [persons, setPersons] = useState([{ name: "Arto Hellas" }]);
+  const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
 
   const submitName = event => {
-    //alert("A name was submitted: " + newName);
     event.preventDefault();
+
+    const filterDuplicateName = persons.filter(
+      person => person.name === newName
+    );
+
+    if (filterDuplicateName.length > 0) {
+      alert(`${newName} is already added to phonebook`);
+      setNewName("");
+      return;
+    }
+
     const personObject = {
       name: newName,
     };
