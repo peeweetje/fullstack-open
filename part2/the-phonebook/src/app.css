@@ -1,0 +1,8 @@
+button {
+  width: 3rem;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
