@@ -1,16 +1,18 @@
 import React from "react";
 
-const FormInput = ({  placeholder, htmlFor, type, className value, onChange }) => {
-  <>
+const FormInput = (
+  { placeholder, id, type, className, value, onChange },
+) => {
+  return (
     <input
-    placeholder={placeholder}
+      placeholder={placeholder}
       type={type}
       className={className}
-      id={htmlFor}
+      id={id}
       value={value}
       onChange={onChange}
     />
-  </>;
+  );
 };
 
 export default FormInput;
