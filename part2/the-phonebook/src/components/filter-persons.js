@@ -1,8 +1,17 @@
 import React from "react";
+import Label from "../label";
+import FormInput from "../form-input";
 
-const FilterPersons = () => {
+const FilterPersons = ({ filterPersons, handleFilterPersons }) => {
   return (
-    <div>hello</div>
+    <Label htmlFor="search">
+      Filter shown with
+      <FormInput
+        value={filterPersons}
+        onChange={handleFilterPersons}
+        type="text"
+      />
+    </Label>
   );
 };
 
