@@ -1,17 +1,10 @@
 import React, { useState } from "react";
-import FormInput from "./form-input";
-import Label from "./label";
+import PersonForm from "./components/person-form";
+import FilterPersons from "./components/filter-persons";
 import "./app.css";
 
 const App = () => {
-  const [persons, setPersons] = useState(
-    [
-      { name: "Arto Hellas", number: "040-123456" },
-      { name: "Ada Lovelace", number: "39-44-5323523" },
-      { name: "Dan Abramov", number: "12-43-234345" },
-      { name: "Mary Poppendieck", number: "39-23-6423122" },
-    ],
-  );
+  const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [filterPersons, setFilterPersons] = useState("");
@@ -59,30 +52,17 @@ const App = () => {
   return (
     <>
       <h2>Phonebook</h2>
-      <Label htmlFor="search">
-        search
-        <FormInput
-          value={filterPersons}
-          onChange={handleFilterPersons}
-          type="text"
-        />
-      </Label>
-      <form className="form-container" onSubmit={submitName}>
-        <h2>Add a new</h2>
-        <Label htmlFor="name">
-          Name:
-          <FormInput value={newName} onChange={handleNewName} id="name" />
-        </Label>
-        <Label htmlFor="number">
-          Number:
-          <FormInput
-            value={newNumber}
-            onChange={handleNewNumber}
-            id="number"
-          />
-        </Label>
-        <button type="submit">add</button>
-      </form>
+      <FilterPersons
+        filterPersons={filterPersons}
+        handleFilterPersons={handleFilterPersons}
+      />
+      <PersonForm
+        submitName={submitName}
+        newName={newName}
+        handleNewName={handleNewName}
+        newNumber={newNumber}
+        handleNewNumber={handleNewNumber}
+      />
       <h2>Numbers</h2>
       {filterPersons === ""
         ? persons?.map((person, i) =>
