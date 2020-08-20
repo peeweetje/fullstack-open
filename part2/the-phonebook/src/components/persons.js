@@ -1,9 +1,22 @@
 import React from "react";
+import Person from "./person";
 
-const Persons = () => {
-  return (
-    <div>hello</div>
-  );
-};
+const Persons = ({ filterPersons, persons, filteredPersons }) => (
+  <>
+    {filterPersons === ""
+      ? persons?.map((person) => (
+        <Person
+          key={person.name}
+          person={person}
+        />
+      ))
+      : filteredPersons?.map((person) => (
+        <Person
+          key={person.name}
+          person={person}
+        />
+      ))}
+  </>
+);
 
 export default Persons;
