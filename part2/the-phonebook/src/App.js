@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PersonForm from "./components/person-form";
 import FilterPersons from "./components/filter-persons";
+import Persons from "./components/persons";
 import "./app.css";
 
 const App = () => {
@@ -64,19 +65,11 @@ const App = () => {
         handleNewNumber={handleNewNumber}
       />
       <h2>Numbers</h2>
-      {filterPersons === ""
-        ? persons?.map((person, i) =>
-          <li key={i}>
-            {person.name},
-            {person.number}
-          </li>
-        )
-        : filteredPersons?.map((person, i) => (
-          <li key={i}>
-            {person.name},
-            {person.number}
-          </li>
-        ))}
+      <Persons
+        filterPersons={filterPersons}
+        filteredPersons={filteredPersons}
+        persons={persons}
+      />
     </>
   );
 };
