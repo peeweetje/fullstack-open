@@ -3,10 +3,10 @@ import Label from "../label";
 import FormInput from "../form-input";
 
 const PersonForms = (
-  { submitName, newName, handleNewName, newNumber, handleNewNumber },
+  { submitName, newName, handleNewName, newNumber, handleNewNumber, className },
 ) => {
   return (
-    <form className="form-container" onSubmit={submitName}>
+    <form className={className} onSubmit={submitName}>
       <h2>Add a new</h2>
       <Label htmlFor="name">
         Name:

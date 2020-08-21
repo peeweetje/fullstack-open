@@ -6,12 +6,14 @@ const Persons = ({ filterPersons, persons, filteredPersons }) => (
     {filterPersons === ""
       ? persons?.map((person) => (
         <Person
+          className="person"
           key={person.name}
           person={person}
         />
       ))
       : filteredPersons?.map((person) => (
         <Person
+          className="person"
           key={person.name}
           person={person}
         />

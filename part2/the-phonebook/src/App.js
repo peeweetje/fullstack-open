@@ -51,7 +51,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <div className="app-container">
       <h2>Phonebook</h2>
       <FilterPersons
         filterPersons={filterPersons}
@@ -70,7 +70,7 @@ const App = () => {
         filteredPersons={filteredPersons}
         persons={persons}
       />
-    </>
+    </div>
   );
 };
 
