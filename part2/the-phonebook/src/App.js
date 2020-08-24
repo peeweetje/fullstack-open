@@ -1,26 +1,27 @@
-import React, { useState } from "react";
-import PersonForm from "./components/person-form";
-import FilterPersons from "./components/filter-persons";
-import Persons from "./components/persons";
-import "./app.css";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import PersonForm from './components/person-form';
+import FilterPersons from './components/filter-persons';
+import Persons from './components/persons';
+import './app.css';
 
 const App = () => {
   const [persons, setPersons] = useState([]);
-  const [newName, setNewName] = useState("");
-  const [newNumber, setNewNumber] = useState("");
-  const [filterPersons, setFilterPersons] = useState("");
+  const [newName, setNewName] = useState('');
+  const [newNumber, setNewNumber] = useState('');
+  const [filterPersons, setFilterPersons] = useState('');
   const [filteredPersons, setFilteredPersons] = useState(undefined);
 
   const submitName = (e) => {
     e.preventDefault();
 
     const filterDuplicateName = persons.filter(
-      (person) => person.name === newName,
+      (person) => person.name === newName
     );
 
     if (filterDuplicateName.length > 0) {
       alert(`${newName} is already added to phonebook`);
-      setNewName("");
+      setNewName('');
       return;
     }
 
@@ -29,8 +30,8 @@ const App = () => {
       number: newNumber,
     };
     setPersons(persons.concat(personObject));
-    setNewName("");
-    setNewNumber("");
+    setNewName('');
+    setNewNumber('');
   };
 
   const handleNewName = (e) => {
@@ -50,8 +51,14 @@ const App = () => {
     setFilteredPersons(filteredPersons);
   };
 
+  useEffect(() => {
+    axios.get('http://localhost:3001/persons').then((response) => {
+      setPersons(response.data);
+    });
+  }, []);
+
   return (
-    <div className="app-container">
+    <div className='app-container'>
       <h2>Phonebook</h2>
       <FilterPersons
         filterPersons={filterPersons}
