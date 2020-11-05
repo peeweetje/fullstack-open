@@ -5,22 +5,35 @@ import Label from './components/label';
 
 function App() {
   const [countries, setCountries] = useState([]);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     axios.get('https://restcountries.eu/rest/v2/all').then((response) => {
-      setCountries(response.data);
+      if (search !== '') {
+        const searchResult = response.data.filter((country) =>
+          country.name.toLowerCase().includes(search.toLowerCase())
+        );
+        setCountries(searchResult);
+        console.log(searchResult);
+      }
     });
-  }, []);
+  }, [search]);
 
-  const searchCountries = (e) => {
-    setCountries(e.target.value);
-    console.log(setCountries(e.target.value));
+  const searchCountries = (event) => {
+    setSearch(event.target.value);
+    console.log(event.target.value);
   };
 
   return (
     <div>
       <Label>Find countries</Label>
-      <Input onChange={searchCountries} />
+      <Input value={search} onChange={searchCountries} />
+      <ul>
+        {
+          countries?.map((country) => (
+            <li key={country.name}>{country.name}</li>
+          ))}
+      </ul>
     </div>
   );
 }
