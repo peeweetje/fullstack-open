@@ -15,14 +15,12 @@ function App() {
           country.name.toLowerCase().includes(search.toLowerCase())
         );
         setCountries(searchResult);
-        console.log(searchResult);
       }
     });
   }, [search]);
 
   const searchCountries = (event) => {
     setSearch(event.target.value);
-    console.log(event.target.value);
   };
 
   return (

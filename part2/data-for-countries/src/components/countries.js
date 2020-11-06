@@ -10,9 +10,9 @@ const Countries = ({countries}) => {
         );
     }
 
-     else if (countries.length === 1){
+    else if (countries.length === 1){
           return (
-            <ul>
+             <ul>
            {countries?.map(country => (
             <CountryInfo key={country.name} country={country}/>
           ))}
