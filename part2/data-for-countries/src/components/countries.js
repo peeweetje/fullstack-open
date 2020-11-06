@@ -1,36 +1,36 @@
 import React from 'react'
+import CountryInfo from './country-info'
 
-const Countries = ({countries, country}) => {
-    if (countries.length >= 10) {
+const Countries = ({countries}) => {
+    if (countries && countries.length >= 10) {
         return (
           <>
             <div>Too many matches, specify another filter.</div>
           </>
         );
     }
-      
+
+     else if (countries.length === 1){
+          return (
+            <ul>
+           {countries?.map(country => (
+            <CountryInfo key={country.name} country={country}/>
+          ))}
+           </ul>
+         )} 
+         
     return (
+      <>
         <ul>
-        {countries?.map((country) => (
+        { countries?.map((country) => (
             <li key={country.name}>{country.name}</li>
           ))}
-      </ul>
-    )
+      </ul> 
+    </>
+    )   
 }
 
 
 export default Countries;
 
- // } else if (countries.length === 1){
-      //     return (
-      //       <>
-      //       <h1>{country.name}</h1>
-      //        <span>Capital: {country.capital}</span>
-      //         <span>Population: {country.population}</span>
-
-      //       <h2>Languages</h2> 
-      //         {countries?.languages.map(language => (
-      //        <li key={language.name}>{language.name}</li>
-      //       ))}
-      //      </>
-      //     )}
+ 
