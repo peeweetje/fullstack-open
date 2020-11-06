@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Input from './components/input';
 import Label from './components/label';
+import Countries from './components/countries';
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -25,16 +26,11 @@ function App() {
   };
 
   return (
-    <div>
+    <>
       <Label>Find countries</Label>
       <Input value={search} onChange={searchCountries} />
-      <ul>
-        {
-          countries?.map((country) => (
-            <li key={country.name}>{country.name}</li>
-          ))}
-      </ul>
-    </div>
+      <Countries countries={countries} />
+    </>
   );
 }
 
