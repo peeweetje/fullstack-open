@@ -1,8 +1,9 @@
 import React from 'react'
 import CountryInfo from './country-info'
 
-const Countries = ({countries}) => {
-    if (countries && countries.length >= 10) {
+const Countries = ({countries, handleShowCountry}) => {
+
+    if (countries.length >= 10) {
         return (
           <>
             <div>Too many matches, specify another filter.</div>
@@ -23,7 +24,9 @@ const Countries = ({countries}) => {
       <>
         <ul>
         { countries?.map((country) => (
-            <li key={country.name}>{country.name}</li>
+            <li key={country.name}>{country.name}
+            <button  onClick={() => handleShowCountry(country.name)}>show</button>
+            </li>
           ))}
       </ul> 
     </>

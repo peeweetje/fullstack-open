@@ -23,11 +23,15 @@ function App() {
     setSearch(event.target.value);
   };
 
+  const handleShowCountry = countryName => {
+    setSearch(countryName);
+  };
+
   return (
     <>
       <Label>Find countries</Label>
       <Input value={search} onChange={searchCountries} />
-      <Countries countries={countries} />
+      <Countries countries={countries} handleShowCountry={handleShowCountry}/>
     </>
   );
 }
