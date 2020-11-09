@@ -1,7 +1,8 @@
 import React from 'react'
 import CountryInfo from './country-info'
+import WeatherInfo from './weather-info'
 
-const Countries = ({countries, handleShowCountry}) => {
+const Countries = ({countries, handleShowCountry, weatherData}) => {
 
     if (countries.length >= 10) {
         return (
@@ -17,7 +18,11 @@ const Countries = ({countries, handleShowCountry}) => {
            {countries?.map(country => (
             <CountryInfo key={country.name} country={country}/>
           ))}
+           <>
+           <WeatherInfo weatherData={weatherData}/>
+           </>
            </ul>
+          
          )} 
          
     return (
