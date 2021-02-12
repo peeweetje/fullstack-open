@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import PersonForm from './components/person-form';
 import FilterPersons from './components/filter-persons';
 import Persons from './components/persons';
+import personsService from './services/persons'
 import './app.css';
 
 const App = () => {
@@ -47,15 +47,18 @@ const App = () => {
     const filteredPersons = persons.filter((person) =>
       person.name.toLowerCase().includes(e.target.value.toLowerCase())
     );
-
     setFilteredPersons(filteredPersons);
   };
 
   useEffect(() => {
-    axios.get('http://localhost:3001/persons').then((response) => {
-      setPersons(response.data);
-    });
-  }, []);
+   personsService
+      .getAll()
+      .then(initialPersons => {
+        setPersons(initialPersons)
+        console.log(initialPersons)
+      })
+  }, [])
+
 
   return (
     <div className='app-container'>
