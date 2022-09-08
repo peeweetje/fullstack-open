@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PersonForm from './components/person-form';
 import FilterPersons from './components/filter-persons';
 import Persons from './components/persons';
-import personsService from './services/persons'
+import personsService from './services/persons';
 import './app.css';
 
 const App = () => {
@@ -51,14 +51,10 @@ const App = () => {
   };
 
   useEffect(() => {
-   personsService
-      .getAll()
-      .then(initialPersons => {
-        setPersons(initialPersons)
-        console.log(initialPersons)
-      })
-  }, [])
-
+    personsService.getAll().then((initialPersons) => {
+      setPersons(initialPersons);
+    });
+  }, []);
 
   return (
     <div className='app-container'>
