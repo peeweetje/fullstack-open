@@ -1,3 +1,3 @@
 ## to start the json-server
 
-- json-sever --watch db.json
+- json-server --watch db.json
