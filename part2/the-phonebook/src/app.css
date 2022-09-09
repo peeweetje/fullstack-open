@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
-  margin: 5rem 15rem;
+  padding: 16px;
 }
 
 h2 {
@@ -14,27 +13,32 @@ h2 {
 input {
   display: flex;
   justify-content: center;
-  padding: 0.75rem 1.25rem;
-  margin: 0.5rem 0;
-  border: 0.0625rem solid #ccc;
-  border-radius: 0.25rem;
+  padding: 8px 16px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   box-sizing: border-box;
 }
 
 button {
   margin-left: 7rem;
-  box-shadow: 0rem 0.625rem 0.875rem -0.4375rem #276873;
-  border: 0.0625rem solid #408c99;
+  box-shadow: 0 0.625rem 0.875rem -0.4375rem #276873;
+  border: 1px solid #408c99;
   background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
   background-color: #599bb3;
-  border-radius: 0.25rem;
+  border-radius: 4px;
   cursor: pointer;
   color: #ffffff;
   font-size: 0.8rem;
-  padding: 0.625rem 2rem;
+  padding: 10px 30px;
   text-decoration: none;
-  text-shadow: 0rem 0.0625rem 0rem #3d768a;
+  text-shadow: 0 0.0625rem 0 #3d768a;
 }
+
+button:hover {
+  background: #24332f;
+}
+
 .person {
   display: flex;
   justify-content: center;
